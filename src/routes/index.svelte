@@ -11,6 +11,7 @@
 
 	$: qrcodeResult = '';
 	const doPrecense = async () => {
+		if(!nims.length) alert("Mohon isikan nim dulu dibawah")
 		for (const nim of nims.filter(Boolean)) {
 			const resp = await fetch(`/api/qrcode-precense.json?npm=${nim}&data=${btoa(qrcodeResult)}`, {
 				method: 'post'
