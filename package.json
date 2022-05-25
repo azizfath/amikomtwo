@@ -38,5 +38,6 @@
 		"@zerodevx/svelte-toast": "^0.7.1",
 		"qr-scanner": "^1.4.1",
 		"svelte-internet-connection": "^0.1.2"
-	}
+	},
+	"packageManager": "yarn@3.2.1"
 }
