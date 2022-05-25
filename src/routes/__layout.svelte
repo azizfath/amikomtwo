@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { SvelteToast } from '@zerodevx/svelte-toast'
+	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import Connectivity from '../components/Connectivity.svelte';
 	import '../app.css';
 	import Container from '../components/Container.svelte';
+	import AddToHomeScreen from '../components/AddToHomeScreen.svelte';
 </script>
 
-<SvelteToast/>
+<SvelteToast />
 <Connectivity />
 <Container>
 	<slot />
@@ -15,3 +16,4 @@
 		<div class="flex flex-row" />
 	</section>
 </footer>
+<AddToHomeScreen />

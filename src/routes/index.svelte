@@ -7,11 +7,11 @@
 	import { failure, success } from '../supports/toast-theme';
 	import { sleep } from '../supports/promise';
 	import { randomNumber } from '../supports/number';
-	let nims = [''];
+	let nims = ['','',''];
 
 	$: qrcodeResult = '';
 	const doPrecense = async () => {
-		if(!nims.length) alert("Mohon isikan nim dulu dibawah")
+		if (!nims.length) alert('Mohon isikan nim dulu dibawah');
 		for (const nim of nims.filter(Boolean)) {
 			const resp = await fetch(`/api/qrcode-precense.json?npm=${nim}&data=${btoa(qrcodeResult)}`, {
 				method: 'post'
@@ -26,7 +26,7 @@
 	};
 
 	onMount(async () => {
-		nims = JSON.parse(localStorage.getItem('qrcode-nims') || '[""]') as string[];
+		nims = JSON.parse(localStorage.getItem('qrcode-nims') || '["","",""]') as string[];
 
 		const videoElem = document.querySelector('video')!;
 
