@@ -7,7 +7,7 @@
 	import { failure, success } from '../supports/toast-theme';
 	import { sleep } from '../supports/promise';
 	import { randomNumber } from '../supports/number';
-	let nims = ['','',''];
+	let nims:string[] = [];
 
 	$: qrcodeResult = '';
 	const doPrecense = async () => {
@@ -26,8 +26,8 @@
 	};
 
 	onMount(async () => {
-		nims = JSON.parse(localStorage.getItem('qrcode-nims') || '["","",""]') as string[];
-
+		nims = JSON.parse(localStorage.getItem('qrcode-nims') || '[]') as string[];
+    nims[nims.length]=''
 		const videoElem = document.querySelector('video')!;
 
 		const qrcode = new QRScanner(videoElem, (result) => {
@@ -53,7 +53,8 @@
 				});
 		});
 
-		await qrcode.start();
+    await qrcode.start();
+
 	});
 
 	const saveNimToLocalStorage = () =>
