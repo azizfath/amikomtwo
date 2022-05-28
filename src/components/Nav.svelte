@@ -16,7 +16,7 @@
 	let mode = ['Presensi Cepat'];
 </script>
 
-<Drawer variant="modal" fixed={true} bind:open>
+<Drawer variant="modal" fixed={true} bind:open >
 	<Header>
 		<Title>Amikom Two</Title>
 		<Subtitle>Aplikasi presensi</Subtitle>
@@ -54,6 +54,9 @@
 						on:installed={() => {
 							addToHomeScreenVisibility = false;
 						}}
+						on:beforeinstall={() => {
+							addToHomeScreenVisibility = true;
+						}}
 					/>
 				</Item>
 			{/if}
@@ -65,8 +68,8 @@
 	<main class="main-content">
 		<TopAppBar bind:this={topAppBar} variant="fixed" class="bg-fuchsia-800">
 			<Row>
-				<Section on:click={() => (open = !open)} class="hover:cursor-pointer">
-					<IconButton class="material-icons">menu</IconButton>
+				<Section>
+					<IconButton class="material-icons" on:click={()=>(open = !open)}>menu</IconButton>
 					<h1 class="text-xl font-bold">Amikom TWO</h1>
 				</Section>
 			</Row>
