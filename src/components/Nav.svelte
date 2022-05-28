@@ -2,21 +2,23 @@
 	import Container from '../components/Container.svelte';
 	import Drawer, { AppContent, Content, Header, Title, Subtitle } from '@smui/drawer';
 	import TopAppBar, { AutoAdjust, Row, Section } from '@smui/top-app-bar';
+	let baseurl = '/'
 
 	import List, { Item, Text } from '@smui/list';
 	import IconButton from '@smui/icon-button';
 	import AddToHomeScreen from './AddToHomeScreen.svelte';
 	import { Subheader, Separator } from '@smui/list';
 	import { H6 } from '@smui/common/elements';
+import { page } from '$app/stores';
+import { goto } from '$app/navigation';
 
 	let open = false;
 
 	let topAppBar: any;
-	let addToHomeScreenVisibility = true;
 	let mode = ['Presensi Cepat'];
 </script>
 
-<Drawer variant="modal" fixed={true} bind:open >
+<Drawer variant="modal" fixed={true} bind:open>
 	<Header>
 		<Title>Amikom Two</Title>
 		<Subtitle>Aplikasi presensi</Subtitle>
@@ -48,15 +50,7 @@
 			<Item href="https://www.linkedin.com/in/binsarjr/" target="_blank">
 				<Text>LinkedIn</Text>
 			</Item>
-			{#if addToHomeScreenVisibility}
-				<Item>
-					<AddToHomeScreen
-						on:installed={() => {
-							addToHomeScreenVisibility = false;
-						}}
-					/>
-				</Item>
-			{/if}
+			<AddToHomeScreen />
 		</List>
 	</Content>
 </Drawer>
@@ -66,8 +60,10 @@
 		<TopAppBar bind:this={topAppBar} variant="fixed" class="bg-fuchsia-800">
 			<Row>
 				<Section>
-					<IconButton class="material-icons" on:click={()=>(open = !open)}>menu</IconButton>
-					<h1 class="text-xl font-bold">Amikom TWO</h1>
+					<IconButton class="material-icons" on:click={() => (open = !open)}>menu</IconButton>
+					<h1 class="text-xl font-bold hover:cursor-pointer" on:click={() => {
+						goto(baseurl)
+					}}>Amikom TWO</h1>
 				</Section>
 			</Row>
 		</TopAppBar>
