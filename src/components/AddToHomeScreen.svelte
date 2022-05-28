@@ -10,6 +10,7 @@
 	let btnInstall = false;
 	pwaDeferredPrompt.subscribe((value) => {
 		deferredPrompt = value;
+		btnInstall=Boolean(deferredPrompt)
 	});
 	const handleInstall = (e: any) => {
 		console.info(`app install call`);
