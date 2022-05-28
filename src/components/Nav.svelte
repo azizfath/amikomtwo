@@ -65,8 +65,8 @@
 	<main class="main-content">
 		<TopAppBar bind:this={topAppBar} variant="fixed" class="bg-fuchsia-800">
 			<Row>
-				<Section>
-					<IconButton class="material-icons" on:click={() => (open = !open)}>menu</IconButton>
+				<Section on:click={() => (open = !open)} class="hover:cursor-pointer">
+					<IconButton class="material-icons">menu</IconButton>
 					<h1 class="text-xl font-bold">Amikom TWO</h1>
 				</Section>
 			</Row>
