@@ -6,13 +6,23 @@
 		"build": "svelte-kit build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
-		"prepare": "svelte-kit sync",
+		"prepare": "svelte-kit sync && yarn run smui-theme-light && yarn run smui-theme-dark",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
 	},
 	"devDependencies": {
+		"@material/dom": "^14.0.0",
+		"@material/theme": "^14.0.0",
+		"@smui/button": "^6.0.0-beta.16",
+		"@smui/common": "^6.0.0-beta.16",
+		"@smui/drawer": "^6.0.0-beta.16",
+		"@smui/icon-button": "^6.0.0-beta.16",
+		"@smui/list": "^6.0.0-beta.16",
+		"@smui/top-app-bar": "^6.0.0-beta.16",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
@@ -25,6 +35,7 @@
 		"postcss": "^8.4.13",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.0",
+		"smui-theme": "^6.0.0-beta.16",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.6",
 		"svelte-preprocess": "^4.10.1",
@@ -34,7 +45,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@binsarjr/apiamikomone": "github:binsarjr/apiamikomone#v1.2.5",
+		"@binsarjr/apiamikomone": "git+https://github.com/binsarjr/apiamikomone#v1.2.5",
 		"@zerodevx/svelte-toast": "^0.7.1",
 		"qr-scanner": "^1.4.1",
 		"svelte-internet-connection": "^0.1.2"

@@ -1,14 +1,22 @@
 <script lang="ts">
+	import { createEventDispatcher, onMount } from 'svelte';
+
 	import { pwaDeferredPrompt } from '../stores';
-	import Wrapper from './Wrapper.svelte';
 
 	let deferredPrompt: any;
-	let btnInstallAppVisible = false;
+	const dispatch = createEventDispatcher();
+	let visible = false;
+	const installed = () => dispatch('installed');
+	const beforeinstall = () => dispatch('beforeinstall');
 	pwaDeferredPrompt.subscribe((value) => {
 		deferredPrompt = value;
-		btnInstallAppVisible = Boolean(deferredPrompt);
+		visible = Boolean(deferredPrompt);
+		if (visible) installed();
+		else beforeinstall();
 	});
-
+	onMount(() => {
+		visible ? installed() : beforeinstall();
+	});
 	const handleInstall = (e: any) => {
 		console.info(`app install call`);
 		e.preventDefault();
@@ -17,15 +25,15 @@
 			pwaDeferredPrompt.update((s) => e);
 		}
 
-		btnInstallAppVisible = true;
+		visible = true;
 		console.info(`app install call complete`);
 	};
 	const installApp = (e: any) => {
-		btnInstallAppVisible = false;
+		visible = false;
 		deferredPrompt.prompt();
 		deferredPrompt.userChoice.then((choiceResult: any) => {
 			if (choiceResult.outcome === 'accepted') {
-				btnInstallAppVisible = false;
+				visible = false;
 				console.info('User accepted the A2HS prompt');
 			} else {
 				console.info('User dismissed the A2HS prompt');
@@ -36,25 +44,10 @@
 </script>
 
 <svelte:window on:beforeinstallprompt={handleInstall} />
-{#if btnInstallAppVisible}
-	<div class="installable">
-		<Wrapper>
-			<div class="flex self-center justify-end items-center mx-auto w-full xl:w-1/2">
-				<button
-					on:click={installApp}
-					class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded w-full"
-					>Install di Android/IOS</button
-				>
-			</div>
-		</Wrapper>
-	</div>
+{#if visible}
+	<button
+		on:click={installApp}
+		class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded w-full"
+		>Install di Android/IOS</button
+	>
 {/if}
-
-<style lang="scss">
-	.installable {
-		position: fixed;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-</style>
