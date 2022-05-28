@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { isMobile, isStandalone } from '..//supports/pwasupport';
-	import { Item,Text } from '@smui/list';
+	import { Item, Text } from '@smui/list';
 
 	import { onMount } from 'svelte';
 
@@ -10,7 +10,7 @@
 	let btnInstall = false;
 	pwaDeferredPrompt.subscribe((value) => {
 		deferredPrompt = value;
-		btnInstall=Boolean(deferredPrompt)
+		btnInstall = Boolean(deferredPrompt);
 	});
 	const handleInstall = (e: any) => {
 		console.info(`app install call`);
@@ -20,11 +20,11 @@
 			pwaDeferredPrompt.update((s) => e);
 		}
 
-		btnInstall = false;
+		btnInstall = true;
 		console.info(`app install call complete`);
 	};
 	const installApp = (e: any) => {
-		btnInstall = false;
+		btnInstall = true;
 		deferredPrompt.prompt();
 		deferredPrompt.userChoice.then((choiceResult: any) => {
 			if (choiceResult.outcome === 'accepted') {
@@ -37,16 +37,16 @@
 		});
 	};
 
-	let refererInstalation: [string,string] | []=[]
+	let refererInstalation: [string, string] | [] = [];
 
 	onMount(() => {
-		window.addEventListener('appinstalled', () => {
-			btnInstall = false;
-		});
-		if(!isStandalone()) {
-			if(isMobile.iOS()) (refererInstalation=["IOS", "/install/ios"])
-			else if(isMobile.Android()) (refererInstalation=["Android", "/install/android"])
-			else (refererInstalation=[])
+		if (!isStandalone()) {
+			window.addEventListener('appinstalled', () => {
+				btnInstall = false;
+			});
+			if (isMobile.iOS()) refererInstalation = ['IOS', '/install/ios'];
+			else if (isMobile.Android()) refererInstalation = ['Android', '/install/android'];
+			else refererInstalation = [];
 		}
 	});
 </script>
@@ -60,10 +60,10 @@
 			>Install di Android/IOS</button
 		>
 	</Item>
-{:else if refererInstalation.length==2}
-	<Item href="{refererInstalation[1]}">
-		<span
-			class="bg-green-500 text-center hover:bg-green-600 text-white py-2 px-4 rounded w-full"
+{/if}
+{#if !btnInstall && refererInstalation.length == 2}
+	<Item href={refererInstalation[1]}>
+		<span class="bg-green-500 text-center hover:bg-green-600 text-white py-2 px-4 rounded w-full"
 			>Install di {refererInstalation[0]}</span
 		>
 	</Item>
