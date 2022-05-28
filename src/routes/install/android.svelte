@@ -4,4 +4,4 @@
 	alt="GIF - Menambahkan amikom two ke home screen"
 	class="my-5 rounded-md"
 /> -->
-<p>Bisa cek di youtube kalau masih belum paham <a href="https://www.youtube.com/watch?v=UsG3NwsH5IA" target="_blank">https://www.youtube.com/watch?v=UsG3NwsH5IA</a></p>
+<p>Bisa cek di youtube kalau masih belum paham <a href="https://www.youtube.com/watch?v=UsG3NwsH5IA" class="bg-blue-500 hover:bg-blue-700" target="_blank">https://www.youtube.com/watch?v=UsG3NwsH5IA</a></p>
