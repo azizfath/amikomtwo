@@ -51,7 +51,7 @@
 			{#if addToHomeScreenVisibility}
 				<Item class="hover:bg-fuchsia-600">
 					<AddToHomeScreen
-						on:beforeinstall={() => {
+						on:installed={() => {
 							addToHomeScreenVisibility = false;
 						}}
 					/>
