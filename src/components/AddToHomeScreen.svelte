@@ -56,7 +56,7 @@
 		<button
 			on:click={installApp}
 			class="bg-green-500 text-center hover:bg-green-600 text-white py-2 px-4 rounded w-full"
-			>Install Aplikasi</button
+			>Install di Android/IOS</button
 		>
 	</Item>
 {:else if refererInstalation.length==2}
