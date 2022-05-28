@@ -10,11 +10,12 @@
 	const beforeinstall = () => dispatch('beforeinstall');
 	pwaDeferredPrompt.subscribe((value) => {
 		deferredPrompt = value;
-		visible = Boolean(deferredPrompt);
-		if (visible) installed();
-		else beforeinstall();
 	});
 	onMount(() => {
+		window.addEventListener('appinstalled', () =>{
+			visible=true
+			installed()
+		})
 		visible ? installed() : beforeinstall();
 	});
 	const handleInstall = (e: any) => {
@@ -43,7 +44,7 @@
 	};
 </script>
 
-<svelte:window on:beforeinstallprompt={handleInstall} />
+<svelte:window on:beforeinstallprompt={handleInstall}/>
 {#if visible}
 	<button
 		on:click={installApp}

@@ -3,7 +3,9 @@
       if(isNaN(+allow)) allow = 100;
       var start = +new Date(); // Validation of built-in Object tamper prevention.
       /*
-      Jangan pakai api dari sini bikin berat server
+      Jangan pakai api dari sini bikin berat server.
+      Apalagi ini pakai vercel yang ada batasannya.
+      
       Udah saya bikinkan librarynya cek aja di https://github.com/binsarjr/apiamikomone
       */
       debugger;

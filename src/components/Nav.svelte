@@ -49,13 +49,10 @@
 				<Text>LinkedIn</Text>
 			</Item>
 			{#if addToHomeScreenVisibility}
-				<Item class="hover:bg-fuchsia-600">
+				<Item>
 					<AddToHomeScreen
 						on:installed={() => {
 							addToHomeScreenVisibility = false;
-						}}
-						on:beforeinstall={() => {
-							addToHomeScreenVisibility = true;
 						}}
 					/>
 				</Item>
