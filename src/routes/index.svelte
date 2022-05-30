@@ -38,6 +38,7 @@
 		const videoElem = document.querySelector('video')!;
 
 		const qrcode = new QRScanner(videoElem, (result) => {
+                        if(onProgress) return;
 			qrcodeResult = result;
 			doPrecense();
 		});
