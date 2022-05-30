@@ -1,4 +1,4 @@
-import { MikomLegacy } from '@binsarjr/apiamikomone'
+import { MikomLegacy } from '@binsarjr/apiamikomone';
 
 export const post = async (event: { url: URL }) => {
 	const npm = event.url.searchParams.get('npm') || '';

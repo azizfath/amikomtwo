@@ -2,15 +2,15 @@
 	import Container from '../components/Container.svelte';
 	import Drawer, { AppContent, Content, Header, Title, Subtitle } from '@smui/drawer';
 	import TopAppBar, { AutoAdjust, Row, Section } from '@smui/top-app-bar';
-	let baseurl = '/'
+	let baseurl = '/';
 
 	import List, { Item, Text } from '@smui/list';
 	import IconButton from '@smui/icon-button';
 	import AddToHomeScreen from './AddToHomeScreen.svelte';
 	import { Subheader, Separator } from '@smui/list';
 	import { H6 } from '@smui/common/elements';
-import { page } from '$app/stores';
-import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
 	let open = false;
 
@@ -61,9 +61,14 @@ import { goto } from '$app/navigation';
 			<Row>
 				<Section>
 					<IconButton class="material-icons" on:click={() => (open = !open)}>menu</IconButton>
-					<h1 class="text-xl font-bold hover:cursor-pointer" on:click={() => {
-						goto(baseurl)
-					}}>Amikom TWO</h1>
+					<h1
+						class="text-xl font-bold hover:cursor-pointer"
+						on:click={() => {
+							goto(baseurl);
+						}}
+					>
+						Amikom TWO
+					</h1>
 				</Section>
 			</Row>
 		</TopAppBar>

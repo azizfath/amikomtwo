@@ -8,16 +8,16 @@
 	import { sleep } from '../supports/promise';
 	import { randomNumber } from '../supports/number';
 	let nims: string[] = [];
-        let onProgress=false;
+	let onProgress = false;
 
 	$: qrcodeResult = '';
 	const doPrecense = async () => {
 		nims = nims.filter(Boolean);
 		if (!nims.length) {
-                         alert('Mohon isikan nim dulu dibawah');
-                         return;
-                }
-                onProgress=true;
+			alert('Mohon isikan nim dulu dibawah');
+			return;
+		}
+		onProgress = true;
 		for (const nim of nims) {
 			const resp = await fetch(`/api/qrcode-precense.json?npm=${nim}&data=${btoa(qrcodeResult)}`, {
 				method: 'post'
@@ -29,7 +29,7 @@
 
 			await sleep(randomNumber(200, 700));
 		}
-                 onProgress=false;
+		onProgress = false;
 	};
 
 	onMount(async () => {
@@ -38,7 +38,7 @@
 		const videoElem = document.querySelector('video')!;
 
 		const qrcode = new QRScanner(videoElem, (result) => {
-                        if(onProgress) return;
+			if (onProgress) return;
 			qrcodeResult = result;
 			doPrecense();
 		});
@@ -52,7 +52,7 @@
 			}
 			QRScanner.scanImage(file, { returnDetailedScanResult: true })
 				.then((result) => {
-                                        if(onProgress) return;
+					if (onProgress) return;
 					qrcodeResult = result.data;
 					doPrecense();
 				})

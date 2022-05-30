@@ -1,6 +1,6 @@
-import { toast } from '@zerodevx/svelte-toast'
+import { toast } from '@zerodevx/svelte-toast';
 
-export const success = (m:string) =>
+export const success = (m: string) =>
 	toast.push(m, {
 		theme: {
 			'--toastBackground': '#22c55e',
@@ -9,7 +9,7 @@ export const success = (m:string) =>
 		}
 	});
 
-export const warning = (m:string) =>
+export const warning = (m: string) =>
 	toast.push(m, {
 		theme: {
 			'--toastBackground': '#eab308',
@@ -18,7 +18,7 @@ export const warning = (m:string) =>
 		}
 	});
 
-export const failure = (m:string) =>
+export const failure = (m: string) =>
 	toast.push(m, {
 		theme: {
 			'--toastBackground': '#ef4444',
