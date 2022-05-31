@@ -7,6 +7,7 @@
 	import { failure, success } from '../supports/toast-theme';
 	import { sleep } from '../supports/promise';
 	import { randomNumber } from '../supports/number';
+	import Loading from '../components/Loading.svelte';
 	let nims: string[] = [];
 	let onProgress = false;
 
@@ -111,6 +112,9 @@
 		</section>
 	{/each}
 </section>
+{#if onProgress}
+	<Loading />
+{/if}
 
 <style>
 	video {

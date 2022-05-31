@@ -4264,6 +4264,11 @@ svelte-internet-connection@^0.1.2:
   resolved "https://registry.yarnpkg.com/svelte-internet-connection/-/svelte-internet-connection-0.1.2.tgz#c73eba0be89b3fd0b0c9902e84402474a971ea95"
   integrity sha512-Fp/J+0dIjDZBK7BWpWOTwsTuUlcinhSJ2aFcH74JKq8qeSl7sNMWgUbZUqNAmIKvANTTyhr22K1itWxY5ag4Vg==
 
+svelte-loading-spinners@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/svelte-loading-spinners/-/svelte-loading-spinners-0.1.7.tgz#3fa6fa0ef67ab635773bf20b07d0b071debbadaa"
+  integrity sha512-EKCId1DjVL2RSUVJJsvtNcqQHox03XIgh4xh/4p7r6ST7d8mut6INY9/LqK4A17PFU64+3quZmqiSfOlf480CA==
+
 svelte-preprocess@^4.0.0, svelte-preprocess@^4.10.1:
   version "4.10.6"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.10.6.tgz#5f9a53e7ed3b85fc7e0841120c725b76ac5a1ba8"
