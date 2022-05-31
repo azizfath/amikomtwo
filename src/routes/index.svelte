@@ -11,7 +11,7 @@
 	let nims: string[] = [];
 	let onProgress = false;
 
-	$: qrcodeResult = '';
+	let qrcodeResult = '';
 	const doPrecense = async () => {
 		nims = nims.filter(Boolean);
 		if (!nims.length) {
