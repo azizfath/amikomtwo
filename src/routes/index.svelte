@@ -80,7 +80,7 @@
 
 <section class="flex flex-col justify-content-center mx-auto gap-2 w-full xl:w-1/2">
 	<h1>Scan QrCode</h1>
-	<video controls class="rounded-lg w-full">
+	<video class="rounded-lg w-full">
 		<track kind="captions" />
 	</video>
 	<Line text="Or" />
