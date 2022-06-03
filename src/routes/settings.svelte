@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onDestroy } from 'svelte';
+	import { onDestroy } from 'svelte';
 
 	import { frontPage } from '../stores';
 	import { success } from '../supports/toast-theme';
@@ -12,8 +12,8 @@ import { onDestroy } from 'svelte';
 		success('Pengaturan berhasil disimpan');
 	}
 	onDestroy(() => {
-		unsubsFpStore()
-	})
+		unsubsFpStore();
+	});
 </script>
 
 <section class="flex flex-col justify-content-center mx-auto gap-5 w-full xl:w-1/2">

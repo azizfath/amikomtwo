@@ -10,6 +10,6 @@
 		goto(fp);
 	});
 	onDestroy(() => {
-		unsubsFpStore()
-	})
+		unsubsFpStore();
+	});
 </script>

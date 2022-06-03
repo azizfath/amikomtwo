@@ -50,8 +50,8 @@
 		}
 	});
 	onDestroy(() => {
-		unsubsPwaStore()
-	})
+		unsubsPwaStore();
+	});
 </script>
 
 <svelte:window on:beforeinstallprompt={handleInstall} />

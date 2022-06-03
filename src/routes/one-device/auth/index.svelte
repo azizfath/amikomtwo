@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	import { failure, success } from '../../../supports/toast-theme';
 	let nim = '';
@@ -40,10 +40,10 @@ import { onMount } from 'svelte';
 		(document.querySelector('form') as HTMLFormElement).submit();
 		return e;
 	};
-	export let error:string
+	export let error: string;
 	onMount(() => {
-		if(error) failure(error)
-	})
+		if (error) failure(error);
+	});
 </script>
 
 <form

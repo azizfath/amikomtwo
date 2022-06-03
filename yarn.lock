@@ -39,9 +39,9 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@binsarjr/apiamikomone@git+https://github.com/binsarjr/apiamikomone#v1.2.6":
+"@binsarjr/apiamikomone@git+https://github.com/binsarjr/apiamikomone#v1.3.0":
   version "1.2.6"
-  resolved "git+https://github.com/binsarjr/apiamikomone#bcc9f14d6c84488eeaaa84981e896d9356ce0eb7"
+  resolved "git+https://github.com/binsarjr/apiamikomone#73abcce861efd800b18486640bdce6856e48349b"
   dependencies:
     "@andreekeberg/imagedata" "^1.0.2"
     cheerio "^1.0.0-rc.10"

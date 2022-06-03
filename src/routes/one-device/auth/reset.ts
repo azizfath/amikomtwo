@@ -1,11 +1,11 @@
-import { resetAuthOneDevice } from "../../../stores/one-device/auth"
+import { resetAuthOneDevice } from '../../../stores/one-device/auth';
 
 export const get = () => {
-    resetAuthOneDevice()
-    return {
-        status: 302,
-        headers: {
-            location: '/one-device/auth'
-        }
-    }
-}
+	resetAuthOneDevice();
+	return {
+		status: 302,
+		headers: {
+			location: '/one-device/auth'
+		}
+	};
+};
