@@ -40,7 +40,7 @@
     regenerator-runtime "^0.13.4"
 
 "@binsarjr/apiamikomone@git+https://github.com/binsarjr/apiamikomone#v1.2.5":
-  version "1.0.0"
+  version "1.2.5"
   resolved "git+https://github.com/binsarjr/apiamikomone#139a1cd4d5e6d5e6e6ec65382c077249e4aab7d0"
   dependencies:
     "@andreekeberg/imagedata" "^1.0.2"
