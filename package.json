@@ -46,7 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@binsarjr/apiamikomone": "git+https://github.com/binsarjr/apiamikomone#v1.2.5",
+		"@binsarjr/apiamikomone": "git+https://github.com/binsarjr/apiamikomone#v1.2.6",
 		"@zerodevx/svelte-toast": "^0.7.1",
 		"qr-scanner": "^1.4.1",
 		"svelte-internet-connection": "^0.1.2"
