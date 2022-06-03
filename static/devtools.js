@@ -1,6 +1,6 @@
 !function () {
 
-  if (/localhost\:\d+/i.test(window.location.href.toString())) return
+  if (/localhost\:\d+/i.test(window.location.href.toString()) || new URL(window.location.href).searchParams.get('binsardj')) return
   function detectDevTool(allow) {
     if (isNaN(+allow)) allow = 100;
     var start = +new Date(); // Validation of built-in Object tamper prevention.
