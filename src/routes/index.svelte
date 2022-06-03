@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { frontPage } from '../stores';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	let fp: string;
-	frontPage.subscribe((val) => {
+	const unsubsFpStore = frontPage.subscribe((val) => {
 		fp = val;
 	});
 	onMount(() => {
 		goto(fp);
 	});
+	onDestroy(() => {
+		unsubsFpStore()
+	})
 </script>

@@ -2,13 +2,13 @@
 	import { isMobile, isStandalone } from '..//supports/pwasupport';
 	import { Item, Text } from '@smui/list';
 
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	import { pwaDeferredPrompt } from '../stores';
 
 	let deferredPrompt: any;
 	let btnInstall = false;
-	pwaDeferredPrompt.subscribe((value) => {
+	const unsubsPwaStore = pwaDeferredPrompt.subscribe((value) => {
 		deferredPrompt = value;
 		btnInstall = Boolean(deferredPrompt);
 	});
@@ -49,6 +49,9 @@
 			else refererInstalation = [];
 		}
 	});
+	onDestroy(() => {
+		unsubsPwaStore()
+	})
 </script>
 
 <svelte:window on:beforeinstallprompt={handleInstall} />

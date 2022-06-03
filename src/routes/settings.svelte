@@ -1,14 +1,19 @@
 <script lang="ts">
+import { onDestroy } from 'svelte';
+
 	import { frontPage } from '../stores';
 	import { success } from '../supports/toast-theme';
 	let fp: string;
-	frontPage.subscribe((value) => {
+	const unsubsFpStore = frontPage.subscribe((value) => {
 		fp = value;
 	});
 	function submit() {
 		frontPage.update(() => fp);
 		success('Pengaturan berhasil disimpan');
 	}
+	onDestroy(() => {
+		unsubsFpStore()
+	})
 </script>
 
 <section class="flex flex-col justify-content-center mx-auto gap-5 w-full xl:w-1/2">
