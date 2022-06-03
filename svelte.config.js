@@ -6,11 +6,10 @@ const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: preprocess(),
-
 	kit: {
 		adapter: adapter(),
 		prerender: {
-			default: true,
+			default: false,
 			concurrency: 10,
 			crawl: true,
 			enabled: true,

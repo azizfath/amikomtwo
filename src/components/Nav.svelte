@@ -3,6 +3,7 @@
 	import Drawer, { AppContent, Content, Header, Title, Subtitle } from '@smui/drawer';
 	import TopAppBar, { AutoAdjust, Row, Section } from '@smui/top-app-bar';
 	let baseurl = '/';
+	$: currentPathname = $page.url.pathname;
 
 	import List, { Item, Text } from '@smui/list';
 	import IconButton from '@smui/icon-button';
@@ -15,7 +16,6 @@
 	let open = false;
 
 	let topAppBar: any;
-	let mode = ['Presensi Cepat'];
 </script>
 
 <Drawer variant="modal" fixed={true} bind:open>
@@ -26,19 +26,56 @@
 	<Content>
 		<List>
 			<Separator />
-			<Subheader components={H6}>Halaman</Subheader>
-			<Item href="/">
-				<Text>Presensi</Text>
-			</Item>
-			<Separator />
 			<Subheader components={H6}>Mode</Subheader>
-			<Item href="javascript:void(0)" class="hover:bg-fuchsia-600 bg-fuchsia-800">
-				<Text class="text-white">Presensi Cepat</Text>
+			<Item
+				href="/quick-presence"
+				class={currentPathname.startsWith('/quick-presence')
+					? 'hover:bg-fuchsia-600 bg-fuchsia-800'
+					: ''}
+			>
+				<Text class={currentPathname.startsWith('/quick-presence') ? 'text-white' : ''}
+					>Presensi Cepat</Text
+				>
 			</Item>
-			<Item class="flex gap-2" href="javascript:void(0)">
-				<Text>One Device</Text>
+			<Item
+				class="flex gap-2 {currentPathname.startsWith('/one-device')
+					? 'hover:bg-fuchsia-600 bg-fuchsia-800'
+					: ''}"
+				href="/one-device"
+			>
+				<Text class=" {currentPathname.startsWith('/one-device') ? 'text-white' : ''}"
+					>One Device</Text
+				>
 				<span class="text-sm bg-yellow-500 rounded px-2 py-1">Segera hadir</span>
 			</Item>
+			<Separator />
+			<Subheader components={H6}>Halaman</Subheader>
+			{#if currentPathname.startsWith('/quick-presence')}
+				<Item
+					href="/quick-presence"
+					class={currentPathname.startsWith('/quick-presence')
+						? 'hover:bg-fuchsia-600 bg-fuchsia-800'
+						: ''}
+				>
+					<Text class={currentPathname.startsWith('/quick-presence') ? 'text-white' : ''}
+						>Presensi</Text
+					>
+				</Item>
+			{:else if currentPathname.startsWith('/one-device')}
+				<Item
+					href="/one-device"
+					class={currentPathname.startsWith('/one-device')
+						? 'hover:bg-fuchsia-600 bg-fuchsia-800'
+						: ''}
+				>
+					<Text class={currentPathname.startsWith('/one-device') ? 'text-white' : ''}>Presensi</Text
+					>
+				</Item>
+			{:else}
+				<Item>
+					<Text class="text-gray-500">Pilih mode dahulu</Text>
+				</Item>
+			{/if}
 			<Separator />
 			<Subheader components={H6}>Lainnya</Subheader>
 			<Item href="https://trakteer.id/binsarjr" target="_blank">
@@ -69,6 +106,14 @@
 					>
 						Amikom TWO
 					</h1>
+				</Section>
+				<Section align="end" toolbar>
+					<IconButton
+						class="material-icons"
+						on:click={() => {
+							goto('/settings');
+						}}>settings</IconButton
+					>
 				</Section>
 			</Row>
 		</TopAppBar>
