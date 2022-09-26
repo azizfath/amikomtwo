@@ -19,7 +19,8 @@
 			return;
 		}
 		onProgress = true;
-		for (const nim of nims) {
+		await Promise.all(nims.map(async nim => {
+
 			const resp = await fetch(`/api/qrcode-precense.json?npm=${nim}&data=${btoa(qrcodeResult)}`, {
 				method: 'post'
 			});
@@ -27,9 +28,7 @@
 
 			if (response.status) success(`<b>${nim} :</b> ${response.message}`);
 			else failure(`<b>${nim} :</b> ${response.message}`);
-
-			await sleep(randomNumber(200, 700));
-		}
+		}))
 		onProgress = false;
 	};
 
