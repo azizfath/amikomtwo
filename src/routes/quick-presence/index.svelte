@@ -1,5 +1,6 @@
 <script lang="ts">
 	import QRScanner from 'qr-scanner';
+	import { Html5Qrcode } from 'html5-qrcode';
 
 	import Line from '../../components/Line.svelte';
 	import { onMount } from 'svelte';
@@ -19,16 +20,21 @@
 			return;
 		}
 		onProgress = true;
-		await Promise.all(nims.map(async nim => {
+		await Promise.all(
+			nims.map(async (nim) => {
+				const resp = await fetch(
+					`/api/qrcode-precense.json?npm=${nim}&data=${btoa(qrcodeResult)}`,
+					{
+						method: 'post'
+					}
+				);
+				const response: { status: boolean; message: string } = await resp.json();
 
-			const resp = await fetch(`/api/qrcode-precense.json?npm=${nim}&data=${btoa(qrcodeResult)}`, {
-				method: 'post'
-			});
-			const response: { status: boolean; message: string } = await resp.json();
-
-			if (response.status) success(`<b>${nim} :</b> ${response.message}`);
-			else failure(`<b>${nim} :</b> ${response.message}`);
-		}))
+				if (response.status) success(`<b>${nim} :</b> ${response.message}`);
+				else failure(`<b>${nim} :</b> ${response.message}`);
+			})
+		);
+		qrcodeResult = '';
 		onProgress = false;
 	};
 
@@ -42,24 +48,36 @@
 			qrcodeResult = result;
 			doPrecense();
 		});
+		const html5QrCode = new Html5Qrcode('reader');
 
 		const fileUpload = document.getElementById('qrcode-upload');
-		fileUpload?.addEventListener('change', (event) => {
+		fileUpload?.addEventListener('change', async (event) => {
 			// @ts-ignore
 			const file = fileUpload?.files[0];
 			if (!file) {
 				return;
 			}
-			QRScanner.scanImage(file, { returnDetailedScanResult: true })
-				.then((result) => {
-					if (onProgress) return;
-					qrcodeResult = result.data;
-					doPrecense();
-				})
-				.catch((e) => {
-					qrcodeResult = '';
-					alert('QRCode tidak ditemukan.');
-				});
+			if (onProgress) return;
+			// @ts-ignore
+			let data = await Promise.any([
+				new Promise((resolve, reject) => {
+					QRScanner.scanImage(file, { returnDetailedScanResult: true })
+						.then((result) => {
+							resolve(result.data);
+						})
+						.catch((e) => {
+							reject(e);
+						});
+				}),
+				html5QrCode.scanFile(file)
+			]);
+			if (data) {
+				qrcodeResult = data;
+				doPrecense();
+			} else {
+				qrcodeResult = '';
+				onProgress = false;
+			}
 		});
 
 		await qrcode.start();
@@ -110,6 +128,7 @@
 			>
 		</section>
 	{/each}
+	<div class="my-5" id="reader" />
 </section>
 {#if onProgress}
 	<Loading />

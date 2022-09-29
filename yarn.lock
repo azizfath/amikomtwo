@@ -39,9 +39,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@binsarjr/apiamikomone@git+https://github.com/binsarjr/apiamikomone#v1.3.0":
-  version "1.2.6"
-  resolved "git+https://github.com/binsarjr/apiamikomone#73abcce861efd800b18486640bdce6856e48349b"
+"@binsarjr/apiamikomone@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@binsarjr/apiamikomone/-/apiamikomone-1.3.2.tgz#827bbcf53e6f7aa4c35336fad7286454561d5fc2"
+  integrity sha512-TuOJHwudWyE4W0kZSHrF1nL0WDffwxvCn2G5+fL8wRZTWhcqOIAqzVjSOAwBLOYRTBP2IlzQxyv4h1+EV0nujw==
   dependencies:
     "@andreekeberg/imagedata" "^1.0.2"
     cheerio "^1.0.0-rc.10"
@@ -2488,6 +2489,11 @@ hosted-git-info@^4.0.1:
   integrity sha512-kyCuEOWjJqZuDbRHzL8V93NzQhwIB71oFWSyzVo+KPZI+pnQPPxucdkrOZvkLRnrf5URsQM+IJ09Dw29cRALIA==
   dependencies:
     lru-cache "^6.0.0"
+
+html5-qrcode@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/html5-qrcode/-/html5-qrcode-2.2.1.tgz#7492359f872abf4ae72ab43824c572ee53607999"
+  integrity sha512-itYnSlSxC3gNRe825mUkKaMzlmevLc4hpH2XLlhCdiEYIE3aMdQUr1XjQ9/zk7NuRMcYRerlbCaMKM+Z66KpSg==
 
 htmlparser2@^8.0.1:
   version "8.0.1"
